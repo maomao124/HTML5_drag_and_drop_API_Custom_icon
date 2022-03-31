@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<!--
+Project name(项目名称)：HTML5_drag_and_drop_API_Custom_icon
+  File name(文件名): test1
+  Authors(作者）: mao
+  Author QQ：1296193245
+  GitHub：https://github.com/maomao124/
+  Date(创建日期)： 2022/3/31
+  Time(创建时间)： 18:46
+  Description(描述)： 无
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            background-color: #78a4ff;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div draggable="true" ondragstart="drag(event)">
+    这是一个可拖放的元素
+</div>
+
+<br>
+<div draggable="true" ondragstart="drag1(event)">
+    这是一个可拖放的元素
+</div>
+<br>
+<br>
+<div id="container" ondragover="dragover(event)" ondrop="drop(event)">
+    这是一个可被拖放的元素
+</div>
+
+<script>
+    function drag(event)
+    {
+        var img = new Image();
+        img.src = "photo/error_photo.gif";
+        event.dataTransfer.setDragImage(img, 5, 5);
+    }
+
+    function drag1(event)
+    {
+        var img = new Image();
+        img.src = "photo/error_photo.png";
+        event.dataTransfer.setDragImage(img, 50, 50);
+    }
+
+    function dragover(event)
+    {
+        event.preventDefault()
+    }
+
+    function drop(event)
+    {
+        event.preventDefault()
+        var container = document.getElementById("container")
+        container.innerHTML = container.innerHTML + "拖放成功<br>"
+    }
+</script>
+</body>
+</html>
